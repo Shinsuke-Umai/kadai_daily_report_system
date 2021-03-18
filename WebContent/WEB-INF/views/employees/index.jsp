@@ -18,7 +18,7 @@
                 <c:forEach var="employee" items="${employees}" varStatus="status">
                     <tr class="row${status.count % 2}">  <%--2色だから、１か０が帰ってくる --%>
                         <td><c:out value="${employee.code}" /></td>
-                        <td><c:out value="${emp;oyee.name}" /></td>
+                        <td><c:out value="${employee.name}" /></td>
                         <td>
                         <c:choose>
                             <c:when test="${employee.delete_flag == 1}">
@@ -47,6 +47,6 @@
                   </c:choose>
                 </c:forEach>
             </div>
-            <p><a href="c:url value='/employees/new' />">新規従業員の登録</a></p>
+            <p><a href="<c:url value='/employees/new' />">新規従業員の登録</a></p>
     </c:param>
 </c:import>

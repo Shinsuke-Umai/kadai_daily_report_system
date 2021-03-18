@@ -4,7 +4,7 @@
      <c:param name="content">
         <h2>従業員 新規登録ページ</h2>
 
-        <form method="POST" action="<c:url value='/employee/create' />"> <%--createサーブレトの機能でを使う --%>
+        <form method="POST" action="<c:url value='/employees/create' />"> <%--createサーブレトの機能でを使う --%>
             <c:import url="_form.jsp" />   <%--new.jspの中にform.jspがある --%>
         </form>
 

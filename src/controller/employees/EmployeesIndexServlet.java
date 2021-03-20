@@ -55,7 +55,7 @@ public class EmployeesIndexServlet extends HttpServlet {
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) { //フラッシュメッセージがセッションスコープにセットされていたら、
             request.setAttribute("flush", request.getSession().getAttribute("flush")); //セッションスコープ内のフラッシュメッセージをリクエストコープに保存し、
-            request.getSession().getAttribute("flush");
+            request.getSession().getAttribute("flush");//セッション内のフラッシュメッセージを取得する
         }
 
         //Employeeの処理後にindex.jspに画面を戻す処理

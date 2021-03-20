@@ -12,7 +12,7 @@ public class EmployeeValidator {
     //入力された文字が空欄かチェックと間違いかチェック
     //間違っていればそのエラーを返す
     public static List<String>validate(Employee e, Boolean codeDuplicateCheckFlag, Boolean passwordCheckFlag) {
-        List<String> errors = new ArrayList<String>();
+        List<String> errors = new ArrayList<String>();//List<String型>のオブジェクトを作成
 
         String code_error = validateCode(e.getCode(), codeDuplicateCheckFlag);
         if(!code_error.equals("")) {

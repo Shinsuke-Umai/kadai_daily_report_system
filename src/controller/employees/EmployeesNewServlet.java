@@ -31,8 +31,8 @@ public class EmployeesNewServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //csrf対策
-        request.setAttribute("_token", request.getSession().getId());
-        request.setAttribute("employee", new Employee()); //ModelクラスのEmployeeクラスのインスタンス化し、employeeという名前でset
+        request.setAttribute("_token", request.getSession().getId());//この時点では_tokenは、セッションから取り出し、リクエストコープに格納(set)している状態、
+        request.setAttribute("employee", new Employee()); //ModelクラスのEmployeeクラスのインスタンス化し、employeeという名前でリクエストコープにset
 
         //処理後にnew.jsp画面にする処理
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new.jsp");

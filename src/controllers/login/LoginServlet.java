@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 
         Employee e = null; //初期値はnullに設定し、ログイン情報を入れる前の状態にする
 
-        if(code != null && code.equals("") && plain_pass != null && plain_pass.equals("")) {
+        if(code != null && !code.equals("") && plain_pass != null && !plain_pass.equals("")) {
             EntityManager em = DBUtil.createEntityManager();
                 String password = EncryptUtil.getPasswordEncrypt(
                         plain_pass,

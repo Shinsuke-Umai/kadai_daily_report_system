@@ -50,8 +50,8 @@ public class TopPageIndexServlet extends HttpServlet {
                                   .getResultList();
 
         long reports_count = (long)em.createNamedQuery("getMyReportsCount", Long.class)
-                .setParameter("employee", login_employee)
-                .getSingleResult();
+                                     .setParameter("employee", login_employee)
+                                     .getSingleResult();
 
         em.close();
 

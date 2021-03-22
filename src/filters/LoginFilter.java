@@ -39,7 +39,7 @@ public class LoginFilter implements Filter {
      * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        //なんの処理？
+
         String context_path = ((HttpServletRequest)request).getContextPath();//"/"の含まれるページへのアクセス
         String servlet_path = ((HttpServletRequest)request).getServletPath();//サーブレットへのアクセス
 

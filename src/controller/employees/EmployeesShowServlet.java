@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Employee;
+import models.Favorite;
 import utils.DBUtil;
 
 /**
@@ -36,10 +37,14 @@ public class EmployeesShowServlet extends HttpServlet {
 
         Employee e = em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
 
+        Favorite f = em.find(Favorite.class, Integer.parseInt(request.getParameter("id"))); //いいね機能
 
         em.close();
 
         request.setAttribute("employee", e);
+
+        request.setAttribute("favorite", f);
+
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/show.jsp");
         rd.forward(request, response);

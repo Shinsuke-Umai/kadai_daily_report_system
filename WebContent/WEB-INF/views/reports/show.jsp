@@ -35,6 +35,8 @@
                     </tbody>
                 </table>
 
+                <p><i class="far fa-thumbs-up fa-lg fa-fw"></i><i class="far fa-thumbs-up fa-lg my-red fa-fw"></i></p> <%--拡張機能のアイコン fa-lgで1.333倍 --%>
+
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>
                 </c:if>

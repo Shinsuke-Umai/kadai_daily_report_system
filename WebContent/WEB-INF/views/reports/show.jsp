@@ -33,9 +33,23 @@
                             <td><fmt:formatDate value="${report.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                         </tr>
                     </tbody>
+
                 </table>
 
-                <p><i class="far fa-thumbs-up fa-lg fa-fw"></i><i class="far fa-thumbs-up fa-lg my-red fa-fw"></i></p> <%--拡張機能のアイコン fa-lgで1.333倍 --%>
+                <%--いいね機能 --%>
+                <form method="POST" action="<c:url value='/favorite' />">
+                <input type="hidden" name="_token" value="${_token}">
+                <c:if test="${!favorite_exist}">
+                 <button type="submit" name="iine" value="black"><i class="far fa-thumbs-up fa-lg fa-fw"></i></button>
+                </c:if>
+                <c:if test="${favorite_exist}">
+                 <button type="submit" name="iine" value="red"><i class="far fa-thumbs-up fa-lg my-red fa-fw"></i></button>
+                </c:if>
+                <input type="hidden" name ="login_employee" value="${login_employee}" />
+                <input type="hidden" name ="report_id" value="${report.id}" />
+                </form>
+
+                <%--いいね機能 --%>
 
                 <c:if test="${sessionScope.login_employee.id == report.employee.id}">
                     <p><a href="<c:url value="/reports/edit?id=${report.id}" />">この日報を編集する</a></p>

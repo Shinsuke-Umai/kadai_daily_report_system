@@ -35,15 +35,16 @@ public class ReportsEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Report r = em.find(Report.class, Integer.parseInt(request.getParameter("id")));
+        Report r = em.find(Report.class, Integer.parseInt(request.getParameter("id")));//どのレポートか
 
         em.close();
 
-        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");//ログインしている従業員のオブジェクト
+
         if(r != null && login_employee.getId() == r.getEmployee().getId()) { //ログインした本人以外は見れないように、セッションにあるログイン情報とデータベスから受け取ったidが一致しているかを確認
-            request.setAttribute("report", r);
-            request.setAttribute("_token", request.getSession().getId());
-            request.getSession().setAttribute("report_id", r.getId());
+            request.setAttribute("report", r);//レポートをjspへ
+            request.setAttribute("_token", request.getSession().getId());//正しいセッションかどうかを確認する値をjspへ
+            request.getSession().setAttribute("report_id", r.getId());//正しいセッション正しいレポートかどうかの値をセッションへ
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/edit.jsp");

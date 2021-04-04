@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "favorites")
     @NamedQuery(
         name = "deleteFavorites",
-        query = "DELETE FROM Favorite AS f WHERE f.id = :id"
+        query = "DELETE FROM Favorite AS f WHERE f.employee = :employee AND f.report = :report"
             )
 @Entity
 public class Favorite {

@@ -3,6 +3,7 @@ package controllers.reports;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,15 +36,25 @@ public class ReportsShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          EntityManager em = DBUtil.createEntityManager();
 
+         try{
             Report r = em.find(Report.class, Integer.parseInt(request.getParameter("id"))); //idを元にそのクラスを呼び出し、変数rに格納
 
             Favorite f = em.find(Favorite.class, Integer.parseInt(request.getParameter("id")));//いいね機能
 
             em.close();
 
+
+            //黒と赤、どちらのアイコンを表示するかの判定の処理//同じ第一引数を送り、jsp側でfalseなら黒、trueなら赤を表示する処理をする
+
+              request.setAttribute("favorite_exist",true);
+              request.setAttribute("favorite_exist",false);
+
             request.setAttribute("report", r); //jspに送信するためにリクエストコープに格納
             request.setAttribute("_token", request.getSession().getId()); //SessionIdをセッションから取り出し、リクエストコープに格納
             request.setAttribute("favorite", f);
+
+
+         }catch(NoResultException ex) {}
 
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/show.jsp");
             rd.forward(request, response);

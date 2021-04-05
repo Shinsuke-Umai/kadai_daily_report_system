@@ -7,15 +7,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Table(name = "favorites")
+ @NamedQueries({
     @NamedQuery(
         name = "deleteFavorites",
         query = "DELETE FROM Favorite AS f WHERE f.employee = :employee AND f.report = :report"
-            )
+    ),
+    @NamedQuery(
+        name = "selectFavorites",
+        query = "SELECT f FROM Favorite As f WHERE f.employee = :employee AND f.report = :report"
+    ),
+
+ })
 @Entity
 public class Favorite {
     @Id

@@ -68,7 +68,7 @@ public class FavoriteServlet extends HttpServlet {
             } else {//赤が押されていれば削除
 
          //DBからdelete
-
+            em.getTransaction().begin();
             em.createNamedQuery("deleteFavorites")
               .setParameter("employee", e) //作った変数eをemployeeとし、Favoriteクラスのdelete文の:emloyeeと紐づける。
               .setParameter("report", r) //作った変数rをFavoriteクラスのdelete文の変数reportと紐づける。
